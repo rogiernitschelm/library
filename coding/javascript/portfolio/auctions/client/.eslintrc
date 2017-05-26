@@ -1,0 +1,19 @@
+{
+  "extends": "rallycoding",
+  "rules": {
+    "arrow-body-style": ["error", "as-needed"]
+  },
+  "globals": {
+    "document": true,
+    "window": true
+  },
+  "settings": {
+    "import/core-modules": [
+    "common",
+    "gql",
+    "helpers",
+    "customization/guest",
+    "customization/validations" 
+    ]
+  }
+}

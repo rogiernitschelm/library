@@ -1,0 +1,29 @@
+.btn {
+  border: 0px;
+  border-radius: 3px;
+  font-family: $font-family-fat;
+
+  &:hover {
+    transition: background-color 0.4s ease-in,
+              color 0.4s ease-in;
+  }
+}
+
+.btn-primary, {
+  background-color: $primary-button;
+
+  &:hover {
+    background-color: $primary-button-hover;
+  }
+}
+
+.btn-outline-primary {
+  border: 0.2em solid $primary-button;
+  color: $primary-button;
+
+  &:hover {
+    border: 0.2em solid $primary-button-hover;
+    color: $primary-button-hover;
+    background-color: $white;
+  }
+}

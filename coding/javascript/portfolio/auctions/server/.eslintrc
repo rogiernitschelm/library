@@ -1,0 +1,16 @@
+{
+  "extends": "rallycoding",
+  "plugins": ["babel"],
+      "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
+  "rules": {
+    "import/no-extraneous-dependencies": [2, { devDependencies: true }],
+    "generator-star-spacing":0,
+    "arrow-body-style": 0,
+    "no-underscore-dangle": 0,
+    "space-before-function-paren": 0,
+    "no-useless-escape": 0
+  }
+}

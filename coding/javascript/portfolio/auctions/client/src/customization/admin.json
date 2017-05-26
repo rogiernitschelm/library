@@ -1,0 +1,15 @@
+{
+  "main": {
+    "WELCOME": "Welkom terug"
+  },
+  "users": {
+    "TITLE": "Gebruikers",
+    "SEARCH": "Zoek gebruikers",
+    "CREDENTIALS": "E-mail en naam",
+    "EMAIL": "E-mailadres",
+    "NAME": "Naam",
+    "USERTYPE": "Gebruikerstype",
+    "REMOVE": "Verwijder",
+    "LOAD_MORE": "Laad meer"
+  }
+}

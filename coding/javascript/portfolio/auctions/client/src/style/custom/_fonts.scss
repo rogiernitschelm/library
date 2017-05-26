@@ -1,0 +1,53 @@
+* {
+  font-family: $font-family-fat;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $font-family-fat;
+}
+
+h1 {
+  font-size: $font-h1;
+}
+
+h2 {
+  font-size: $font-h2;
+}
+
+h3 {
+  font-size: $font-h3;
+}
+
+h4 {
+  font-size: $font-h4;
+}
+
+label, input, textarea, select {
+  font-size: $font-text !important;
+  font-weight: 300;
+}
+
+::-webkit-input-placeholder {
+  color: $medium-grey !important;
+  font-size: $font-text;
+  font-style: italic;
+}
+::-moz-placeholder {
+  color: $medium-grey !important;
+  font-size: $font-text;
+  font-style: italic;
+} /* firefox 19+ */
+:-ms-input-placeholder {
+  color: $medium-grey !important;
+  font-size: $font-text;
+  font-style: italic;
+} /* ie */
+input:-moz-placeholder {
+  color: $medium-grey !important;
+  font-size: $font-text;
+  font-style: italic;
+}
+
+.material-icons {
+  vertical-align: middle;
+}

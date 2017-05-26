@@ -1,0 +1,8 @@
+a {
+  color: $primary-dark;
+  font-family: $font-family-fat;
+
+  &:hover {
+    color: $primary;
+  }
+}
