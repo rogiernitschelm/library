@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  calculator
+//  Calculator
 //
-//  Created by Rogier Nitschelm on 22/05/2017.
+//  Created by Rogier Nitschelm on 28/05/2017.
 //  Copyright © 2017 Rogier Nitschelm. All rights reserved.
 //
 

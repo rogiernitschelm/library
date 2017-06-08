@@ -13,6 +13,8 @@
 		AE2A47D31ED70AB7005AF765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE2A47D21ED70AB7005AF765 /* Assets.xcassets */; };
 		AE2A47D61ED70AB7005AF765 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE2A47D41ED70AB7005AF765 /* LaunchScreen.storyboard */; };
 		AE2A47DF1ED720E0005AF765 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2A47DE1ED720E0005AF765 /* MapKit.framework */; };
+		AEF21D671EDB048B00EB6C24 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF21D661EDB048B00EB6C24 /* DataModel.swift */; };
+		AEF21D691EDB056300EB6C24 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF21D681EDB056300EB6C24 /* DataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		AE2A47D51ED70AB7005AF765 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE2A47D71ED70AB7005AF765 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE2A47DE1ED720E0005AF765 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AEF21D661EDB048B00EB6C24 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		AEF21D681EDB056300EB6C24 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				AE2A47D21ED70AB7005AF765 /* Assets.xcassets */,
 				AE2A47D41ED70AB7005AF765 /* LaunchScreen.storyboard */,
 				AE2A47D71ED70AB7005AF765 /* Info.plist */,
+				AEF21D661EDB048B00EB6C24 /* DataModel.swift */,
+				AEF21D681EDB056300EB6C24 /* DataStore.swift */,
 			);
 			path = "Where was I";
 			sourceTree = "<group>";
@@ -149,7 +155,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE2A47CE1ED70AB7005AF765 /* ViewController.swift in Sources */,
+				AEF21D691EDB056300EB6C24 /* DataStore.swift in Sources */,
 				AE2A47CC1ED70AB7005AF765 /* AppDelegate.swift in Sources */,
+				AEF21D671EDB048B00EB6C24 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +321,7 @@
 				AE2A47DC1ED70AB7005AF765 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

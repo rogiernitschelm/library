@@ -19,18 +19,48 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        // Do any additional setup after loading the view, typically from a nib.
+        locationManager.startUpdatingLocation()
+        
+        UpdateSavedPin()
     }
     
-//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        <#code#>
-//    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func UpdateSavedPin() {
+        if let oldCoordinates = DataStore().GetLastLocation() {
+            
+            let annotationRemove = mapView.annotations.filter { $0 !== mapView.userLocation }
+            
+            mapView.removeAnnotations(annotationRemove)
+            
+            let annotation = MKPointAnnotation()
+            
+            annotation.coordinate.latitude = Double(oldCoordinates.latitude)!
+            annotation.coordinate.longitude = Double(oldCoordinates.longitude)!
+            annotation.title = "I was here!"
+            annotation.subtitle = "Remember?"
+            
+            mapView.addAnnotation(annotation)
+        }
     }
-
-
+    
+    @IBAction func saveButtonClicked(_ sender: Any) {
+        let coordinates = locationManager.location?.coordinate
+        
+        if let lat = coordinates?.latitude {
+            if let lon = coordinates?.longitude {
+                DataStore().StoredDataPoint(latitude: String(lat), longitude: String(lon))
+            }
+        }
+        
+        UpdateSavedPin()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        guard status == .authorizedWhenInUse else {
+            return print("Location not enabled")
+        }
+        
+        print("Location allowed")
+        mapView.showsUserLocation = true
+    }
 }
 

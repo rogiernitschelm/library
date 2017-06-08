@@ -1,107 +1,61 @@
 //
 //  ViewController.swift
-//  calculator
+//  Calculator
 //
-//  Created by Rogier Nitschelm on 22/05/2017.
+//  Created by Rogier Nitschelm on 28/05/2017.
 //  Copyright © 2017 Rogier Nitschelm. All rights reserved.
 //
 
 import UIKit
 
-
 class ViewController: UIViewController {
+    private var userIsTyping = false
+    private var brain: CalculatorBrain = CalculatorBrain()
     
-    var currentOperation: Operator = Operator.nothing
-    var calculationState: CalculationState = CalculationState.enteringNumber
-    var firstValue: String = ""
-    
-    @IBOutlet weak var resultLabel: UILabel!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var display: UILabel!
+    @IBAction func touchDigit(_ sender: UIButton) {
+        let digit = sender.currentTitle!
+        
+        if userIsTyping {
+            let textCurrentlyInDisplay = display.text!
+            display.text = textCurrentlyInDisplay + digit
+        } else {
+            display.text = digit
+            userIsTyping = true
+        }
     }
     
-    // Button actions 
-    
-    @IBAction func numberClicked(_ sender: UIButton) {
-        updateDisplay(number: String(sender.tag))
-    }
-    
-    func updateDisplay(number: String) {
-        if calculationState == CalculationState.newNumberStarted {
-            if let num = resultLabel.text {
-                if num != "" {
-                    firstValue = num
+    var displayValue: Double {
+        get {
+            if let displayText = display.text {
+                if let displayDouble = Double(displayText) {
+                    return displayDouble
                 }
+        
             }
             
-            calculationState = CalculationState.enteringNumber
-            resultLabel.text = number
+            return 0
+
         }
         
-        else if calculationState == CalculationState.enteringNumber {
-            resultLabel.text = resultLabel.text! + number
+        set {
+            display.text = String(newValue)
         }
     }
     
-    @IBAction func operatorClicked(_ sender: UIButton) {
-        calculationState = CalculationState.newNumberStarted
-        
-        if let num = resultLabel.text {
-            if num != "" {
-                firstValue = num
-                resultLabel.text = ""
-            }
+    @IBAction func performOperation(_ sender: UIButton) {
+        if userIsTyping {
+            brain.setOperand(displayValue)
+            userIsTyping = false
         }
         
-        switch sender.tag {
-            case 10:
-                currentOperation = Operator.add
-                resultLabel.text = "+"
-            case 11:
-                currentOperation = Operator.subtract
-                resultLabel.text = "-"
-            case 12:
-                currentOperation = Operator.times
-                resultLabel.text = "*"
-            case 13:
-                currentOperation = Operator.divide
-                resultLabel.text = "/"
-            default:
-                return
-        }
-    }
-    
-    @IBAction func equalsClicked(_ sender: UIButton) {
-        calculateSum()
-    }
-    
-    func calculateSum() {
-        if (firstValue.isEmpty) {
-            return
+        if let mathematicalSymbol = sender.currentTitle {
+            brain.performOperation(mathematicalSymbol)
         }
         
-        var result = ""
-        if currentOperation == Operator.times {
-            result = "\(Double(firstValue)! * Double(resultLabel.text!)!)"
-        } else if currentOperation == Operator.divide {
-            result = "\(Double(firstValue)! / Double(resultLabel.text!)!)"
-        } else if currentOperation == Operator.add {
-            result = "\(Double(firstValue)! + Double(resultLabel.text!)!)"
-        } else if currentOperation == Operator.subtract {
-            result = "\(Double(firstValue)! - Double(resultLabel.text!)!)"
+        if let result = brain.result {
+            displayValue = result
         }
-        
-        resultLabel.text = result
-        calculationState = CalculationState.newNumberStarted
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
