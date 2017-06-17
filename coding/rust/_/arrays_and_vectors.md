@@ -21,6 +21,14 @@ let mut numbers: Vec<i32> = Vec::with_capacity(25);
 let Vec<u32> = (0..7).collect();
 ```
 
+Creating a slice:
+
+```rust
+let vector = vec![1, 2, 3];
+let slice = &vector[..];
+let string_slice: &[&str] = &["one", "two", "three"];
+```
+
 Accessing elements:
 
 ```rust
@@ -41,15 +49,14 @@ Adding and removing items:
 
 ```rust
 numbers.push(1);
-numbers.pop()
+numbers.pop();
+numbers.remove(index);
 ```
 
 Iterating:
 
 ```rust
-
-```
-
-```rust
-
+for i in array.iter() {
+  println!("Item is: {}", i);
+}
 ```

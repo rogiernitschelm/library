@@ -3,6 +3,26 @@
 A string (String) is mutable and has heap memory allocated to it. A string
 slice (&str) has a fixed size.
 
+Creating a string:
+
+```rust
+let mut string = String::from("I am a string");
+let mut string = String::new();
+let mut string = String::with_capacity(10);
+```
+
+Appending to a string:
+```rust
+let mut mutable_string = String::from("Hello there");
+let string = String::from("Hi");
+let other_string = String::from("Bonjour");
+let character: char = 'c';
+
+mutable_string.push_str(&string);
+mutable_string += &other_string;
+mutable_string.push(character);
+```
+
 Methods:
 
 ```rust
@@ -22,6 +42,8 @@ let v: Vec<&str> = "a bcd".split(' ').collect() -> ["a", "bcd"]
 ```
 
 ## Characters
+
+Methods:
 
 ```rust
 .is_digit('1') -> true

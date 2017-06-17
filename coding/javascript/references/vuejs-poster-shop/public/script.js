@@ -1,11 +1,13 @@
 const PRICE = 9.99;
 const PLACEHOLDER_SEARCH = 'Chewbacca';
+const LOAD_NUMBER = 10;
 
 new Vue({
   el: '#app',
   data: {
     items: [],
     cart: [],
+    results: [],
     search: PLACEHOLDER_SEARCH,
     lastSearch: PLACEHOLDER_SEARCH,
     loading: false
@@ -19,14 +21,14 @@ new Vue({
     }
   },
 
-  async beforeCreate() {
-    this.loading = true;
-    result = await this.$http.get('/search/Chewbacca');
-    this.items = result.data;
-    this.loading = false;
-  },
-
   methods: {
+    appendItems() {
+      if (this.items.length < this.results.length) {
+        const append = this.results.slice(this.items.length, this.items.length + LOAD_NUMBER);
+        this.items = this.items.concat(append);
+      }
+    },
+
     async onSubmit() {
       this.items = [];
       this.lastSearch = '';
@@ -35,10 +37,17 @@ new Vue({
       let result;
       const newSearch = this.search;
 
+      if (!newSearch) {
+        this.items = [];
+        this.loading = false;
+        return;
+      }
+
       try {
         result = await this.$http.get(`/search/${newSearch}`);
         this.lastSearch = this.search;
-        this.items = result.data;
+        this.results = result.data;
+        this.appendItems();
         this.loading = false;
       } catch (error) {
         console.error(error);
@@ -79,5 +88,15 @@ new Vue({
     currency(price = 0) {
       return `$ ${price.toFixed(2)}`
     }
-  }
+  },
+
+  async mounted() {
+    this.onSubmit();
+    const vueInstance = this;
+    const element = document.getElementById('product-list-bottom');
+    const watcher = scrollMonitor.create(element);
+    watcher.enterViewport(() => {
+      vueInstance.appendItems();
+    });
+  },
 });

@@ -1,39 +1,13 @@
 ## Functions
 
-Main:
-
-```rust
-fn main() {
-  println!("Hello, world!");
-}
-```
-
-Passing arguments:
-
-```rust
-fn main() {
-  print_number(5);
-}
-
-fn print_number(x: i32) {
-  println!("x is: {}", x);
-}
-```
-
 Returning a value:
 
 ```rust
 fn add_one(x: i32) -> i32 {
   x + 1
 }
-```
 
-Early returns:
-
-```rust
-fn foo(x: i32) -> i32 {
-  return x;
-}
+add_one(10);
 ```
 
 Diverging functions (functions that return nothing):
@@ -42,4 +16,16 @@ Diverging functions (functions that return nothing):
 fn diverges() -> ! {
   panic!("This function does not return!")
 }
+```
+
+Pipes:
+
+```rust
+let add_one = |number: i32| number + 1;
+add_one(10) // 11
+
+let minus_one = |x| {
+    x - 1
+};
+minus_one(10) // 9
 ```
